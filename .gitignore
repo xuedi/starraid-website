@@ -1,0 +1,7 @@
+# Local
+*.log
+.env
+
+# JetBrains IDEs (GoLand, IntelliJ, etc.)
+.idea/
+*.iml

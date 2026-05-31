@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StarRaid — a persistent 2D space sandbox</title>
+  <meta name="description" content="StarRaid is an open-source, server-authoritative 2D space sandbox — an Eve Online–style persistent sim, simplified to 2D.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="#top">★ StarRaid</a>
+      <div class="nav-links">
+        <a href="#game">The game</a>
+        <a href="#status">Status</a>
+        <a href="#components">Components</a>
+        <a href="#setup">Setup</a>
+        <a href="https://github.com/xuedi" class="ext">GitHub ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="stars" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <h1>StarRaid</h1>
+        <p class="tagline">
+          An open-source, server-authoritative <strong>2D space sandbox</strong> — an
+          <em>Eve&nbsp;Online</em>–style persistent sim, simplified to two dimensions.
+        </p>
+        <p class="sub">
+          A galaxy of sectors linked by jump gates. Ships whose abilities come entirely from
+          the modules you bolt onto them. One simulation authority, a persistent world, and
+          bots that play by exactly the same rules as humans.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="#setup">Get it running</a>
+          <a class="btn" href="#components">Browse the repos</a>
+        </div>
+        <p class="lineage">Rebuilt from scratch periodically since ~2005. This is the newest iteration.</p>
+      </div>
+    </section>
+
+    <section id="game" class="section">
+      <h2>What is the game?</h2>
+      <p>
+        You command an <strong>object</strong> — a ship, station, drone or depot — adrift in a
+        shared, persistent 2D universe. The galaxy is a graph of <strong>sectors</strong> joined
+        by <strong>jump gates</strong>, with a security gradient from safe core space to lawless
+        frontier.
+      </p>
+      <div class="cards">
+        <article class="card">
+          <h3>Your ship is its modules</h3>
+          <p>
+            An object has no fixed stats. Speed, hull, power, sensors, jamming, cargo and weapons
+            are all <strong>derived from the modules</strong> you install. What your ship <em>is</em>
+            emerges from its module mix.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Server-authoritative</h3>
+          <p>
+            One server owns the simulation and validates every action. Open-source clients and
+            bots are safe because the server, not the client, decides outcomes.
+          </p>
+        </article>
+        <article class="card">
+          <h3>See only what you sense</h3>
+          <p>
+            The world is interest-managed: you hear about a neighbour only when your
+            <strong>sensors beat their jammers</strong> and they're in range — not the whole map.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Factions &amp; contracts</h3>
+          <p>
+            Factions hold territory, standing and goals, and post <strong>contracts</strong> —
+            the unit of work in the world — for agents to accept, complete and get paid for.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Bots are first-class</h3>
+          <p>
+            NPCs are headless <strong>bots</strong> that connect over the very same wire protocol
+            as a human client. There are no privileged messages — fork the reference bot to
+            automate your own account.
+          </p>
+        </article>
+        <article class="card">
+          <h3>A living world</h3>
+          <p>
+            The server simulates an active slice and lets dormant areas sleep, fast-forwarding
+            them when you return. PostgreSQL is the single source of truth — the world survives
+            restarts.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="status" class="section alt">
+      <h2>Project status</h2>
+      <ul class="status-list">
+        <li><span class="dot done"></span><strong>Design:</strong> essentially complete — every system is specced in the docs.</li>
+        <li><span class="dot done"></span><strong>Scaffold:</strong> all component repos build and are committed.</li>
+        <li><span class="dot done"></span><strong>First slice:</strong> server version-handshake + login works end-to-end (humans and bots).</li>
+        <li><span class="dot wip"></span><strong>Next:</strong> the live session — spawn, movement, and a first combat + AI loop.</li>
+      </ul>
+      <p class="note">
+        This is an early, in-progress rebuild. The infrastructure has been solved many times over
+        20 years; the goal this time is to make one combat + AI loop genuinely playable early.
+      </p>
+    </section>
+
+    <section id="components" class="section">
+      <h2>Components</h2>
+      <p>
+        StarRaid is a multi-repo project. Each component is its own independent git repository
+        with its own README and <code>justfile</code>; they share only the contracts between them.
+      </p>
+      <div class="repos">
+        <a class="repo" href="https://github.com/xuedi/starraid-protocol">
+          <h3>protocol <span class="tag">Protobuf</span></h3>
+          <p>The wire contract between client/npc and server — the single source of truth for the game's messages.</p>
+        </a>
+        <a class="repo" href="https://github.com/xuedi/starraid-server">
+          <h3>server <span class="tag">Go</span></h3>
+          <p>The sole gameplay authority: the tick loop, action validation, and PostgreSQL persistence.</p>
+        </a>
+        <a class="repo" href="https://github.com/xuedi/starraid-npc">
+          <h3>npc <span class="tag">Go</span></h3>
+          <p>The reference bot plus the dispatcher tier that spawns bots on the server's request.</p>
+        </a>
+        <a class="repo" href="https://github.com/xuedi/starraid-client">
+          <h3>client <span class="tag">Godot · C#</span></h3>
+          <p>The native desktop game client — thin, server-authoritative, renders only what it senses.</p>
+        </a>
+        <a class="repo" href="https://github.com/xuedi/starraid-admin">
+          <h3>admin <span class="tag">Go · Svelte</span></h3>
+          <p>The game-master web console for steering the living world: events, factions, fixtures, monitoring.</p>
+        </a>
+        <a class="repo" href="https://github.com/xuedi/starraid-website">
+          <h3>website <span class="tag">Static</span></h3>
+          <p>This site — the project's public front door and getting-started guide.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="setup" class="section alt">
+      <h2>Setup</h2>
+      <p>
+        Every component is an independent, open-source repository with its own README and
+        <code>justfile</code>. Clone the ones you need side by side and build each on its own.
+        You'll want <strong>Go 1.26+</strong>, <strong>Docker</strong>, <strong>protoc</strong>
+        and <a href="https://github.com/casey/just"><code>just</code></a>.
+      </p>
+      <pre><code># clone the components you need, side by side
+git clone git@github.com:xuedi/starraid-protocol.git protocol
+git clone git@github.com:xuedi/starraid-server.git   server
+git clone git@github.com:xuedi/starraid-npc.git      npc</code></pre>
+      <p>Build and run the server:</p>
+      <pre><code>cd server
+just install                      # wire this module to your local protocol checkout
+just db-up                        # start PostgreSQL
+STARRAID_DEV_SECRET=dev just run  # run the server</code></pre>
+      <p>In another terminal, connect the reference bot — it speaks the same protocol as a human client:</p>
+      <pre><code>cd npc
+just install
+just run -server localhost:60000 -user dev -secret dev</code></pre>
+      <p class="note">
+        Each Go component finds the shared protocol bindings through a local, configurable path —
+        no fixed checkout layout required. See each repo's README for details.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      StarRaid is free software, licensed under the
+      <a href="https://eupl.eu/">EUPL-1.2</a>.
+    </p>
+    <p class="muted">Built by Daniel Koch · <a href="https://github.com/xuedi">github.com/xuedi</a></p>
+  </footer>
+</body>
+</html>
