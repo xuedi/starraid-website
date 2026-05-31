@@ -16,7 +16,7 @@
         <a href="#status">Status</a>
         <a href="#components">Components</a>
         <a href="#setup">Setup</a>
-        <a href="https://github.com/xuedi" class="ext">GitHub ↗</a>
+        <a href="https://github.com/orgs/StarRaidGame/repositories" class="ext">GitHub ↗</a>
       </div>
     </nav>
   </header>
@@ -122,27 +122,27 @@
         with its own README and <code>justfile</code>; they share only the contracts between them.
       </p>
       <div class="repos">
-        <a class="repo" href="https://github.com/xuedi/starraid-protocol">
+        <a class="repo" href="https://github.com/StarRaidGame/protocol">
           <h3>protocol <span class="tag">Protobuf</span></h3>
           <p>The wire contract between client/npc and server — the single source of truth for the game's messages.</p>
         </a>
-        <a class="repo" href="https://github.com/xuedi/starraid-server">
+        <a class="repo" href="https://github.com/StarRaidGame/server">
           <h3>server <span class="tag">Go</span></h3>
           <p>The sole gameplay authority: the tick loop, action validation, and PostgreSQL persistence.</p>
         </a>
-        <a class="repo" href="https://github.com/xuedi/starraid-npc">
+        <a class="repo" href="https://github.com/StarRaidGame/npc">
           <h3>npc <span class="tag">Go</span></h3>
           <p>The reference bot plus the dispatcher tier that spawns bots on the server's request.</p>
         </a>
-        <a class="repo" href="https://github.com/xuedi/starraid-client">
+        <a class="repo" href="https://github.com/StarRaidGame/client">
           <h3>client <span class="tag">Godot · C#</span></h3>
           <p>The native desktop game client — thin, server-authoritative, renders only what it senses.</p>
         </a>
-        <a class="repo" href="https://github.com/xuedi/starraid-admin">
+        <a class="repo" href="https://github.com/StarRaidGame/admin">
           <h3>admin <span class="tag">Go · Svelte</span></h3>
           <p>The game-master web console for steering the living world: events, factions, fixtures, monitoring.</p>
         </a>
-        <a class="repo" href="https://github.com/xuedi/starraid-website">
+        <a class="repo" href="https://github.com/StarRaidGame/website">
           <h3>website <span class="tag">Static</span></h3>
           <p>This site — the project's public front door and getting-started guide.</p>
         </a>
@@ -158,9 +158,9 @@
         and <a href="https://github.com/casey/just"><code>just</code></a>.
       </p>
       <pre><code># clone the components you need, side by side
-git clone git@github.com:xuedi/starraid-protocol.git protocol
-git clone git@github.com:xuedi/starraid-server.git   server
-git clone git@github.com:xuedi/starraid-npc.git      npc</code></pre>
+git clone git@github.com:StarRaidGame/protocol.git protocol
+git clone git@github.com:StarRaidGame/server.git   server
+git clone git@github.com:StarRaidGame/npc.git      npc</code></pre>
       <p>Build and run the server:</p>
       <pre><code>cd server
 just install                      # wire this module to your local protocol checkout
@@ -182,7 +182,7 @@ just run -server localhost:60000 -user dev -secret dev</code></pre>
       StarRaid is free software, licensed under the
       <a href="https://eupl.eu/">EUPL-1.2</a>.
     </p>
-    <p class="muted">Built by Daniel Koch · <a href="https://github.com/xuedi">github.com/xuedi</a></p>
+    <p class="muted">Built by Daniel Koch · <a href="https://github.com/orgs/StarRaidGame/repositories">github.com/StarRaidGame</a></p>
   </footer>
 </body>
 </html>
